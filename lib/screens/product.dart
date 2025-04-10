@@ -2,10 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:shopin/core/theme/icons.dart';
 import 'package:shopin/core/theme/strings.dart';
 import 'package:shopin/core/theme/text_styles.dart';
-import 'package:shopin/models/product/product_model.dart';
-import 'package:shopin/models/product/products.dart';
-import 'package:shopin/models/review/reviews.dart';
-import 'package:shopin/screens/cart.dart';
 
 class ProductPage extends StatefulWidget {
   const ProductPage({super.key});
@@ -167,95 +163,9 @@ class _ProductPageState extends State<ProductPage> {
                                               Icon(Icons.star,color: Colors.yellowAccent),
                                               Icon(Icons.star,color: Colors.yellowAccent),
                                               Icon(Icons.star,color: Colors.grey),
-                                              TextButton(
-                                                  onPressed: (){
-                                                    Navigator.of(context).push(
-                                                      MaterialPageRoute(builder: (context) => Scaffold(
-                                                        appBar: AppBar(
-                                                            leadingWidth: 100,
-                                                            leading: Row(
-                                                              children: [
-                                                                IconButton(
-                                                                  onPressed: (){
-                                                                    Navigator.pop(context);
-                                                                  },
-                                                                  icon: Icon(Icons.arrow_back),
-                                                                ),
-                                                                Expanded(child: Text("Back",style: TextStyle(fontSize: 18))),
-                                                              ],
-                                                            )
-                                                        ),
-                                                        body: Hero(
-                                                            tag: Text(''),
-                                                            child: SafeArea(
-                                                                child: CustomScrollView(
-                                                                  slivers: [
-                                                                    SliverList(
-                                                                      delegate: SliverChildListDelegate(
-                                                                          [
-                                                                            Text("Reviews (45)",style: TextStyle(fontSize: 40)),
-                                                                            SizedBox(height: 20),
-                                                                            for(int i=0;i<reviews.length;i++)
-                                                                            Container(
-                                                                              height: sizeHeight * 0.2,
-                                                                              width: sizeWidth,
-                                                                              padding: EdgeInsets.all(12),
-                                                                              child: Column(
-                                                                                crossAxisAlignment: CrossAxisAlignment.start,
-                                                                                children: [
-                                                                                  Row(
-                                                                                    children: [
-                                                                                      CircleAvatar(
-                                                                                        backgroundImage: AssetImage(reviews[i].imageUrl),
-                                                                                        backgroundColor: Colors.transparent,
-                                                                                        radius: 20,
-                                                                                      ),
-                                                                                      SizedBox(width: 10),
-                                                                                      Column(
-                                                                                        crossAxisAlignment: CrossAxisAlignment.start,
-                                                                                        children: [
-                                                                                          Text(reviews[i].person,style: TextStyle(fontWeight: FontWeight.bold,fontSize: 18)),
-                                                                                          Row(
-                                                                                            children: [
-                                                                                              for(int i=0;i<5;i++)
-                                                                                                Icon(Icons.star,color: Colors.yellowAccent.shade700),
-                                                                                              Text(reviews[i].date,style: TextStyle(color: Colors.grey,fontSize: 12)),
-                                                                                            ],
-                                                                                          )
-                                                                                        ],
-                                                                                      )
-                                                                                    ],
-                                                                                  ),
-                                                                                  Spacer(),
-                                                                                  Text(reviews[i].title,style: TextStyle(fontSize: 16,fontWeight: FontWeight.bold)),
-                                                                                  Text(reviews[i].subtitle,style: TextStyle(color: Colors.grey,fontSize: 14)),
-                                                                                  Spacer(),
-                                                                                  Divider(
-                                                                                    color: Colors.grey,
-                                                                                    height: 2,
-                                                                                  ),
-                                                                                ],
-                                                                              ),
-                                                                            )
-                                                                          ]
-                                                                        ),
-                                                                    )
-                                                                  ],
-                                                                )
-                                                            ),
-                                                          ),
-                                                        ),
-                                                      )
-                                                    );
-                                                  },
-                                                  child: Text("124 reviews",style: TextStyle(color: Colors.blueAccent))
-                                              ),
                                             ],
                                           ),
                                           MaterialButton(
-                                            onPressed: (){
-                                              Navigator.push(context, MaterialPageRoute(builder: (context) => CartPage()));
-                                            },
                                             height: 60,
                                             minWidth: 240,
                                             color: Colors.deepPurple,
