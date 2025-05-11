@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:shopin/core/theme/strings.dart';
 import 'package:shopin/core/theme/text_styles.dart';
 import 'package:shopin/screens/product.dart';
+import 'package:shopin/screens/sign_in_up.dart';
 
 class WelcomePage extends StatefulWidget {
   const WelcomePage({super.key});
@@ -44,14 +46,7 @@ class _WelcomePageState extends State<WelcomePage> {
                   MaterialButton(
                     height: 60,
                     minWidth: 240,
-                    onPressed: (){
-                      Navigator.pushAndRemoveUntil(
-                          context,
-                          MaterialPageRoute(builder: (context) => ProductPage(),
-                          ),
-                            (Route<dynamic> route) => false,
-                      );
-                    },
+                    onPressed: () => context.go('/welcome'),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(8),
                     ),

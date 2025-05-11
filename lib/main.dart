@@ -1,9 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:shopin/screens/welcome.dart';
+import 'package:shopin/my_app.dart';
 
-void main(){
-  runApp(MaterialApp(
-    debugShowCheckedModeBanner: false,
-    home: WelcomePage(),
-  ));
-}
+void main() => runApp(MyApp());
