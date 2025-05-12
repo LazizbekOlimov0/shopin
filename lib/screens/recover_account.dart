@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:shopin/screens/sign_in_up.dart';
+import 'package:go_router/go_router.dart';
 
 class RecoverAccount extends StatefulWidget {
   const RecoverAccount({super.key});
@@ -45,40 +45,40 @@ class _RecoverAccountState extends State<RecoverAccount> {
               ],
             ),
             SizedBox(
-                height: 100,
-                width: sizeWidth,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Row(
-                      children: [
-                        CircleAvatar(
-                          backgroundColor: Colors.red.shade300,
-                          radius: 16,
-                          child: Text("S"),
-                        ),
-                        Column(
-                          children: [
-                            Row(children: [Text("Shopin"), Text("17:56")]),
-                            Text("to me_"),
-                          ],
-                        ),
-                      ],
-                    ),
-                    Row(
-                      children: [
-                        IconButton(
-                          onPressed: () {},
-                          icon: Icon(Icons.arrow_back, color: Colors.grey),
-                        ),
-                        IconButton(
-                          onPressed: () {},
-                          icon: Icon(Icons.more_horiz, color: Colors.grey),
-                        ),
-                      ],
-                    ),
-                  ],
-                )
+              height: 100,
+              width: sizeWidth,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Row(
+                    children: [
+                      CircleAvatar(
+                        backgroundColor: Colors.red.shade300,
+                        radius: 16,
+                        child: Text("S"),
+                      ),
+                      Column(
+                        children: [
+                          Row(children: [Text("Shopin"), Text("17:56")]),
+                          Text("to me_"),
+                        ],
+                      ),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      IconButton(
+                        onPressed: () {},
+                        icon: Icon(Icons.arrow_back, color: Colors.grey),
+                      ),
+                      IconButton(
+                        onPressed: () {},
+                        icon: Icon(Icons.more_horiz, color: Colors.grey),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
             ),
             SizedBox(height: 60),
             Text("Reset your Shopin", style: TextStyle(fontSize: 40)),
@@ -117,108 +117,134 @@ class _RecoverAccountState extends State<RecoverAccount> {
     );
   }
 
-  _newPassword(BuildContext context , double sizeHeight, double sizeWidth){
-    return Navigator.of(context).push(MaterialPageRoute(builder: (context) => Scaffold(
-      body: Hero(
-          tag: "",
-          child: SingleChildScrollView(
-            child: Container(
-              height: sizeHeight,
-              width: sizeWidth,
-              padding: EdgeInsets.all(40),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Text("New Password",style: TextStyle(color: Colors.deepPurple.shade700,fontSize: 40)),
-                  SizedBox(height: 20),
-                  TextField(
-                    controller: controllerNew,
-                    decoration: InputDecoration(
-                      labelText: "New Password",
-                    ),
-                  ),
-                  SizedBox(height: 20),
-                  TextField(
-                    controller: controllerNew,
-                    decoration: InputDecoration(
-                      labelText: "Confirm Password",
-                    ),
-                  ),
-                  SizedBox(height: 20),
-                  MaterialButton(
-                    onPressed: () => _successfully(context, sizeHeight, sizeWidth),
-                    height: sizeHeight * 0.09,
-                    minWidth: 240,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                    color: Colors.deepPurple.shade700,
-                    child: Center(
-                      child: Text(
-                        "Save",
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
+  _newPassword(BuildContext context, double sizeHeight, double sizeWidth) {
+    return Navigator.of(context).push(
+      MaterialPageRoute(
+        builder:
+            (context) => Scaffold(
+              body: Hero(
+                tag: "",
+                child: SingleChildScrollView(
+                  child: Container(
+                    height: sizeHeight,
+                    width: sizeWidth,
+                    padding: EdgeInsets.all(40),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Text(
+                          "New Password",
+                          style: TextStyle(
+                            color: Colors.deepPurple.shade700,
+                            fontSize: 40,
+                          ),
                         ),
-                      ),
+                        SizedBox(height: 20),
+                        TextField(
+                          controller: controllerNew,
+                          decoration: InputDecoration(
+                            labelText: "New Password",
+                          ),
+                        ),
+                        SizedBox(height: 20),
+                        TextField(
+                          controller: controllerNew,
+                          decoration: InputDecoration(
+                            labelText: "Confirm Password",
+                          ),
+                        ),
+                        SizedBox(height: 20),
+                        MaterialButton(
+                          onPressed:
+                              () =>
+                                  _successfully(context, sizeHeight, sizeWidth),
+                          height: sizeHeight * 0.09,
+                          minWidth: 240,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          color: Colors.deepPurple.shade700,
+                          child: Center(
+                            child: Text(
+                              "Save",
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
                   ),
-                ],
+                ),
               ),
             ),
-          )
       ),
-    )
-    )
     );
   }
 
-  _successfully(BuildContext context , double sizeHeight, double sizeWidth){
-    return Navigator.of(context).push(MaterialPageRoute(builder: (context) => Scaffold(
-      body: Hero(
-          tag: "",
-          child: SingleChildScrollView(
-            child: Container(
-              height: sizeHeight,
-              width: sizeWidth,
-              padding: EdgeInsets.all(40),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Text("New Password",style: TextStyle(color: Colors.deepPurple.shade700,fontSize: 40)),
-                  SizedBox(height: 20),
-                  Text("You successfully reset your password.",style: TextStyle(color: Colors.deepPurple.shade700)),
-                  Text("Please use your password to sign in.",style: TextStyle(color: Colors.deepPurple.shade700)),
-                  SizedBox(height: 20),
-                  MaterialButton(
-                    onPressed: () {
-                      Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => SignInUpPage()), (Route<dynamic> route) => false,);
-                    },
-                    height: sizeHeight * 0.09,
-                    minWidth: 240,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                    color: Colors.deepPurple.shade700,
-                    child: Center(
-                      child: Text(
-                        "Sign In",
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
+  _successfully(BuildContext context, double sizeHeight, double sizeWidth) {
+    return Navigator.of(context).push(
+      MaterialPageRoute(
+        builder:
+            (context) => Scaffold(
+              body: Hero(
+                tag: "",
+                child: SingleChildScrollView(
+                  child: Container(
+                    height: sizeHeight,
+                    width: sizeWidth,
+                    padding: EdgeInsets.all(40),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Text(
+                          "New Password",
+                          style: TextStyle(
+                            color: Colors.deepPurple.shade700,
+                            fontSize: 40,
+                          ),
                         ),
-                      ),
+                        SizedBox(height: 20),
+                        Text(
+                          "You successfully reset your password.",
+                          style: TextStyle(color: Colors.deepPurple.shade700),
+                        ),
+                        Text(
+                          "Please use your password to sign in.",
+                          style: TextStyle(color: Colors.deepPurple.shade700),
+                        ),
+                        SizedBox(height: 20),
+                        MaterialButton(
+                          onPressed: () {
+                            context.go('/singInUp');
+                          },
+                          height: sizeHeight * 0.09,
+                          minWidth: 240,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          color: Colors.deepPurple.shade700,
+                          child: Center(
+                            child: Text(
+                              "Sign In",
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
                   ),
-                ],
+                ),
               ),
             ),
-          )
       ),
-    )
-    )
     );
   }
 }

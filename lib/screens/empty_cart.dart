@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:shopin/screens/product.dart';
+import 'package:go_router/go_router.dart';
 
 class EmptyCart extends StatelessWidget {
   const EmptyCart({super.key});
@@ -33,7 +33,7 @@ class EmptyCart extends StatelessWidget {
                 ),
                 MaterialButton(
                   onPressed: (){
-                    Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => ProductPage()),(Route<dynamic> route) => false);
+                    context.go('/product');
                   },
                   height: 60,
                   minWidth: 240,

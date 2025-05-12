@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:shopin/models/user/user_model.dart';
 import 'package:shopin/models/user/users.dart';
-import 'package:shopin/screens/product.dart';
-import 'package:shopin/screens/reset_password.dart';
 
 class SignInUpPage extends StatefulWidget {
   const SignInUpPage({super.key});
@@ -66,9 +64,13 @@ class _SignInUpPageState extends State<SignInUpPage> {
                         height: 60,
                         minWidth: 240,
                         onPressed: () {
-                          final user = UserModel('',email: controllerEmail.text, password: controllerPassword.text);
-                          if(users.contains(user)){
-                            Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => ProductPage()),  (Route<dynamic> route) => false);
+                          final user = UserModel(
+                            '',
+                            email: controllerEmail.text,
+                            password: controllerPassword.text,
+                          );
+                          if (users.contains(user)) {
+                            context.go('/product');
                           }
                           controllerEmail.clear();
                           controllerPassword.clear();
@@ -133,7 +135,7 @@ class _SignInUpPageState extends State<SignInUpPage> {
                     children: [
                       SizedBox(),
                       TextButton(
-                        onPressed: () => context.go(''),
+                        onPressed: () => context.go('/resetPassword'),
                         child: Text(
                           "Forgot password",
                           style: TextStyle(
@@ -213,11 +215,20 @@ class _SignInUpPageState extends State<SignInUpPage> {
                                 MaterialButton(
                                   height: 60,
                                   minWidth: 240,
-                                  onPressed: (){
-                                    if(controllerPassword.text == controllerConfirmPassword.text){
-                                     final user = UserModel(controllerName.text, email: controllerEmail.text, password: controllerPassword.text);
-                                     users.add(user);
-                                      _congratulations(context, sizeHeight, sizeWidth);
+                                  onPressed: () {
+                                    if (controllerPassword.text ==
+                                        controllerConfirmPassword.text) {
+                                      final user = UserModel(
+                                        controllerName.text,
+                                        email: controllerEmail.text,
+                                        password: controllerPassword.text,
+                                      );
+                                      users.add(user);
+                                      _congratulations(
+                                        context,
+                                        sizeHeight,
+                                        sizeWidth,
+                                      );
                                     }
                                   },
                                   shape: RoundedRectangleBorder(
@@ -239,7 +250,7 @@ class _SignInUpPageState extends State<SignInUpPage> {
                                   children: [
                                     Text("Don't have an account?"),
                                     TextButton(
-                                      onPressed: () {},
+                                      onPressed: () => context.go('/signInUp'),
                                       child: Text(
                                         "Sign In",
                                         style: TextStyle(
@@ -273,7 +284,14 @@ class _SignInUpPageState extends State<SignInUpPage> {
                 tag: "",
                 child: Stack(
                   children: [
-                    SizedBox(height: sizeHeight, width: sizeWidth, child: Image(image: AssetImage("assets/images/img.png"),fit: BoxFit.cover)),
+                    SizedBox(
+                      height: sizeHeight,
+                      width: sizeWidth,
+                      child: Image(
+                        image: AssetImage("assets/images/img.png"),
+                        fit: BoxFit.cover,
+                      ),
+                    ),
                     Container(
                       height: sizeHeight,
                       width: sizeWidth,
@@ -293,11 +311,15 @@ class _SignInUpPageState extends State<SignInUpPage> {
                               ),
                               Text(
                                 "Your account has been",
-                                style: TextStyle(color: Colors.deepPurple.shade700),
+                                style: TextStyle(
+                                  color: Colors.deepPurple.shade700,
+                                ),
                               ),
                               Text(
                                 "successfully created",
-                                style: TextStyle(color: Colors.deepPurple.shade700),
+                                style: TextStyle(
+                                  color: Colors.deepPurple.shade700,
+                                ),
                               ),
                             ],
                           ),
@@ -305,13 +327,7 @@ class _SignInUpPageState extends State<SignInUpPage> {
                             height: 60,
                             minWidth: 240,
                             onPressed: () {
-                                Navigator.pushAndRemoveUntil(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => SignInUpPage(),
-                                  ),
-                                      (Route<dynamic> route) => false,
-                                );
+                              context.go('/signInUp');
                             },
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(8),
@@ -331,7 +347,7 @@ class _SignInUpPageState extends State<SignInUpPage> {
                       ),
                     ),
                   ],
-                )
+                ),
               ),
             ),
       ),

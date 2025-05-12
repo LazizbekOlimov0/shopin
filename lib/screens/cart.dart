@@ -1,8 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:shopin/models/product/products.dart';
-import 'package:shopin/screens/empty_cart.dart';
-import 'package:shopin/screens/shipping_address.dart';
 
 class CartPage extends StatefulWidget {
   const CartPage({super.key});
@@ -92,11 +91,7 @@ class _CartPageState extends State<CartPage> {
                                       height: 52,
                                       minWidth: 132,
                                       onPressed: (){
-                                        Navigator.of(context).push(
-                                            MaterialPageRoute(
-                                                builder: (context) => EmptyCart(),
-                                            )
-                                        );
+                                        context.go('/emptyCart');
                                       },
                                       color: Colors.deepPurple.shade700,
                                       shape: RoundedRectangleBorder(
@@ -241,7 +236,7 @@ class _CartPageState extends State<CartPage> {
               ),
               MaterialButton(
                 onPressed: (){
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => ShippingPage()));
+                  context.go('/shipping');
                 },
                 height: 60,
                 minWidth: 240,

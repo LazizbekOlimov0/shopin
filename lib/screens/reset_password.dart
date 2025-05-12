@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:shopin/screens/recover_account.dart';
+import 'package:go_router/go_router.dart';
 
 class ResetPassword extends StatefulWidget {
   const ResetPassword({super.key});
@@ -108,7 +108,7 @@ class _ResetPasswordState extends State<ResetPassword> {
                           ),
                           SizedBox(height: 30),
                           MaterialButton(
-                            onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (context) => RecoverAccount())),
+                            onPressed: () => context.go('/recoverAccount'),
                             height: sizeHeight * 0.09,
                             minWidth: 240,
                             shape: RoundedRectangleBorder(

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:shopin/screens/payment.dart';
+import 'package:go_router/go_router.dart';
 
 class ShippingPage extends StatefulWidget {
   const ShippingPage({super.key});
@@ -65,7 +65,7 @@ class _ShippingPageState extends State<ShippingPage> {
                 height: 60,
                 minWidth: 240,
                 onPressed: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => PaymentPage()));
+                  context.go('/checkOutPayment');
                 },
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(8),
